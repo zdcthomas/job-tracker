@@ -13,15 +13,15 @@ describe 'user edits job' do
 
         expect(current_path).to eq(edit_company_job_path(company, job))
 
-        fill_in 'job[title]', with: 'Not Developer'
-        fill_in 'job[level_of_interest]', with: 20
-        fill_in 'job[city]', with: 'Not Denver'
-
-        click_on 'Update Job'
-
         new_title = 'Not Developer'
         new_interest = 20
         new_city = 'Not Denver'
+        
+        fill_in 'job[title]', with: new_title
+        fill_in 'job[level_of_interest]', with: new_interest
+        fill_in 'job[city]', with: new_city
+
+        click_on 'Update Job'
 
         expect(page).to have_content(new_title)
         expect(page).to have_content(new_interest)
