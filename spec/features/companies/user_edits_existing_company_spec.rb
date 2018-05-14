@@ -5,11 +5,12 @@ describe "User edits an existing company" do
     company = Company.create!(name: "ESPN")
     visit edit_company_path(company)
 
-    fill_in "company[name]", with: "EA Sports"
+    new_name = "EA Sports"
+    fill_in "company[name]", with: new_name
     click_button "Update"
 
     expect(current_path).to eq("/companies/#{Company.last.id}/jobs")
-    expect(page).to have_content("EA Sports")
-    expect(page).to_not have_content("ESPN")
+    expect(page).to have_content(new_name)
+    expect(page).to_not have_content(company.name)
   end
 end
