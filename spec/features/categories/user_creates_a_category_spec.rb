@@ -35,7 +35,10 @@ describe "A User" do
 
     it "redirects to the category creation page if the information is invalid" do
       visit new_category_path
+      title = "Some Title"
+      Category.create(title: title)
 
+      fill_in "category[title]", with: title
       click_on "Create"
 
       expect(current_path).to eq(new_category_path)
