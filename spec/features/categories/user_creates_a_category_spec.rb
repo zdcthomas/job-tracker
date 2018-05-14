@@ -22,9 +22,25 @@ describe "A User" do
     end
 
     it "should redirect to category/show page" do
+      visit new_category_path
+
+      title = "New Category"
+      fill_in "category[title]", with: title
+
+      click_on "Create"
+
+      expect(current_path).to eq(category_path id: 1)
+      expect(page).to have_content(title)
     end
 
-    it "redirects to the category creation page" do
+    it "redirects to the category creation page if the information is invalid" do
+      visit new_category_path
+
+      fill_in "category[title]", with: ""
+
+      click_on "Create"
+
+      expect(current_path).to eq(new_category_path)
     end
   end
 end
