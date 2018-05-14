@@ -10,7 +10,7 @@ describe 'A user' do
       click_link 'Delete'
 
 
-      expect(current_path).to eq(company_jobs_path)
+      expect(current_path).to eq(company_jobs_path company)
       expect(page).to_not have_content(job.title)
     end
   end
