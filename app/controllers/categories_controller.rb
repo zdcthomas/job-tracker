@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @jobs = @category.jobs
   end
 
   def index
@@ -31,11 +32,11 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    
+
     redirect_to categories_path
   end
-  
-  private 
+
+  private
 
   def category_params
     params.require(:category).permit(:title, :body)
