@@ -48,7 +48,9 @@ describe "A User" do
       fill_in "comment[content]", with: comment_content1
       click_on "Create Comment"
       fill_in "comment[content]", with: comment_content2
+      click_on "Create Comment"
 
+      save_and_open_page
       expect(page).to have_content(comment_content1)
       expect(page).to have_content(comment_content2)
     end
@@ -67,9 +69,13 @@ describe "A User" do
       click_on "Create Comment"
       fill_in "comment[content]", with: comment_content2
       click_on "Create Comment"
-
-      expect(page).to have_content("li:nth-child(1)", :text => "#{comment_content2}")
-      expect(page).to have_content("li:nth-child(2)", :text => "#{comment_content1}")
+      
+      within "li:nth-child(1)" do
+        expect(page).to have_content(comment_content2)
+      end
+      within "li:nth-child(2)" do
+        expect(page).to have_content(comment_content1)
+      end
     end
   end
 end

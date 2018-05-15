@@ -11,3 +11,12 @@
   <%= render partial: "comment" %>
 </header>
 
+<ul>
+  <% @comments.each do |comment| %>
+  <li>
+    <%= comment.created_at %>
+    <%= comment.content %>
+    </li>
+  <%end%>
+</ul>
+
