@@ -10,7 +10,7 @@ describe "A User" do
                                  city: "Denver", 
                                  category_id: category.id)
 
-      visit company_job_path company job
+      visit company_job_path(company, job)
 
       expect(page).to have_field("comment[content]")
       expect(page).to have_button("Create Comment")
@@ -27,11 +27,11 @@ describe "A User" do
       comment_content = "This is a great looking job. It even pays money!"
 
 
-      visit company_job_path company job
+      visit company_job_path company, job
       fill_in "comment[content]", with: comment_content
       click_on "Create Comment"
 
-      expect(current_path).to eq(company_job_path company job)
+      expect(current_path).to eq(company_job_path company, job)
       expect(page).to have_content(comment_content)
     end
     it 'should display all comments sbumitted' do
@@ -44,7 +44,7 @@ describe "A User" do
       comment_content1 = "This is a great looking job. It even pays money!"
       comment_content2 = "I've changed my mind, this job looks horrible."
 
-      visit company_job_path company job
+      visit company_job_path company, job
       fill_in "comment[content]", with: comment_content1
       click_on "Create Comment"
       fill_in "comment[content]", with: comment_content2
@@ -62,7 +62,7 @@ describe "A User" do
       comment_content1 = "This is a great looking job. It even pays money!"
       comment_content2 = "I've changed my mind, this job looks horrible."
 
-      visit company_job_path company job
+      visit company_job_path company, job
       fill_in "comment[content]", with: comment_content1
       click_on "Create Comment"
       fill_in "comment[content]", with: comment_content2
