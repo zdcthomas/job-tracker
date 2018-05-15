@@ -23,7 +23,8 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job
+    @comment = Comment.new
+    @comments = Comment.all.order(created_at: :desc)
   end
 
   def edit
