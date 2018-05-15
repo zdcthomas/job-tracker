@@ -26,7 +26,6 @@ describe "User creates a new job" do
     expect(page).to have_content(city)
   end
 
-  describe 'user creates a new job' do
     it 'should have a dropdown menu for categories' do
       company = Company.create!(name: "ESPN")
       visit new_company_job_path(company)
@@ -38,6 +37,5 @@ describe "User creates a new job" do
       visit new_company_job_path(company)
 save_and_open_page
       expect(page).to have_link('add new category')
-    end
   end
 end
