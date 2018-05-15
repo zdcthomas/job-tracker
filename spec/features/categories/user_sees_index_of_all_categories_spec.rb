@@ -15,7 +15,6 @@ describe "A User" do
       category1 = Category.create!(title:"Finance")
 
       visit categories_path
-      save_and_open_page
 
       expect(page).to have_button("Delete")
       expect(page).to have_button("Edit")
