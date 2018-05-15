@@ -13,23 +13,23 @@ describe 'A User' do
     it 'should add the new category to the database' do
       visit new_category_path
 
-      title = 'New Category'
+      title = 'New Title'
       fill_in 'category[title]', with: title
 
       click_on 'Create'
-      
-      category =  Category.find_by(title: title)
+
+      category = Category.find_by(title: title)
       expect(category.title).to eq(title)
     end
 
     it 'should redirect to category/show page' do
       visit new_category_path
 
-      title = 'New Category'
+      title = 'New Title'
       fill_in 'category[title]', with: title
       click_on 'Create'
-      
-      category =  Category.find_by(title: title)
+
+      category = Category.find_by(title: title)
       expect(current_path).to eq(category_path category)
 
       expect(page).to have_content(title)

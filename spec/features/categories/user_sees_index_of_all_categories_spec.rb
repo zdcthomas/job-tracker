@@ -37,12 +37,10 @@ describe "A User" do
   describe 'clicks the delete button' do
     it 'should delete the corresponding category' do
       category1 = Category.create!(title:"Finance")
-      category2 = Category.create!(title:"Entertainment Industry")
 
       visit categories_path
-      click_on("Delete_#{category1.id}")
+      click_on("Delete")
 
-      expect(page).to have_content(category2.title)
       expect(page).to_not have_content(category1.title)
     end
   end
