@@ -23,7 +23,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job
+    @comment = Comment.new
   end
 
   def edit
