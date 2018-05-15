@@ -10,7 +10,7 @@ describe "A User" do
                                  city: "Denver", 
                                  category_id: category.id)
 
-      visit company_job_path(company, job)
+      visit company_job_path company, job
 
       expect(page).to have_field("comment[content]")
       expect(page).to have_button("Create Comment")
