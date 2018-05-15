@@ -17,8 +17,9 @@ describe 'A User' do
       fill_in 'category[title]', with: title
 
       click_on 'Create'
-
-      expect(Category.find(1).title).to eq(title)
+      
+      category =  Category.find_by(title: title)
+      expect(category.title).to eq(title)
     end
 
     it 'should redirect to category/show page' do
@@ -26,10 +27,11 @@ describe 'A User' do
 
       title = 'New Category'
       fill_in 'category[title]', with: title
-
       click_on 'Create'
+      
+      category =  Category.find_by(title: title)
+      expect(current_path).to eq(category_path category)
 
-      expect(current_path).to eq(category_path id: 1)
       expect(page).to have_content(title)
     end
 
