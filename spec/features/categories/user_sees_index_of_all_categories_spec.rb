@@ -7,7 +7,6 @@ describe "A User" do
       category3 = Category.create!(title:"Entry Level")
 
       visit categories_path
-
       expect(page).to have_content(category1.title)
       expect(page).to have_content(category2.title)
       expect(page).to have_content(category3.title)
@@ -16,21 +15,25 @@ describe "A User" do
       category1 = Category.create!(title:"Finance")
 
       visit categories_path
+      save_and_open_page
 
-      expect(page).to have_button("Delete_#{category1.id}")
-      expect(page).to have_button("Edit_#{category1.id}")
+      expect(page).to have_button("Delete")
+      expect(page).to have_button("Edit")
     end
   end
+
   describe 'clicks the edit button' do
     it 'should redirect to the corresponding edit page' do
       category1 = Category.create!(title:"Finance")
 
       visit categories_path
-      click_on "Edit_#{category1.id}"
+
+      click_on "Edit"
 
       expect(current_path).to eq(edit_category_path category1)
     end
   end
+
   describe 'clicks the delete button' do
     it 'should delete the corresponding category' do
       category1 = Category.create!(title:"Finance")

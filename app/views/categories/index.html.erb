@@ -4,8 +4,8 @@
   <% @categories.each do |category| %>
   <li>
     <%= category.title %>
-    <%= link_to "Edit_#{category.id}", edit_category_path(category) %>
-    <%= link_to "Delete_#{category.id}", category_path(category), method: "delete" %>
+    <%= button_to "Edit", edit_category_path(category), method: 'get' %>
+    <%= button_to "Delete", category_path(category), method: "delete" %>
   </li>
   <% end %>
 </ul>
