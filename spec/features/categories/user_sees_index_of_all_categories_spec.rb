@@ -22,7 +22,7 @@ describe "A User" do
     end
   end
   describe 'clicks the edit button' do
-    it 'should redirect to the corresponding edit page' do 
+    it 'should redirect to the corresponding edit page' do
       category1 = Category.create!(title:"Finance")
 
       visit categories_path
