@@ -6,6 +6,9 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
 
+  <%= f.label :company_id %>
+  <%= f.collection_select(:company_id, Company.all, :id, :name) %>
+
   <%= f.label :level_of_interest %>
   <%= f.number_field :level_of_interest %>
 

@@ -15,9 +15,10 @@ describe "User creates a new job" do
     fill_in "job[description]", with: description
     fill_in "job[level_of_interest]", with: level_of_interest
     fill_in "job[city]", with: city
-    select category.title, from: 'Category'
-
-    click_button "Create"
+    select "#{category.title}", from: 'Category'
+    select "#{company.name}", from: 'Company'
+    
+    click_on 'Create Job'
 
     expect(current_path).to eq("/companies/#{company.id}/jobs/#{Job.last.id}")
     expect(page).to have_content(company.name)
@@ -35,7 +36,7 @@ describe "User creates a new job" do
     it 'should have a create new category button' do
       company = Company.create!(name: "ESPN")
       visit new_company_job_path(company)
-save_and_open_page
+
       expect(page).to have_link('add new category')
   end
 end

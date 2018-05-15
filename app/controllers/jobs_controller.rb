@@ -49,10 +49,10 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:company_id, :category_id, :title, :description, :level_of_interest, :city)
   end
 
   def set_job
-    @job = Job.find(params[:id])  
+    @job = Job.find(params[:id])
   end
 end
