@@ -18,7 +18,7 @@ describe "User creates a new job from company job path" do
     select "#{category.title}", from: 'Category'
     select "#{company.name}", from: 'Company'
     
-    click_on 'Create Job'
+    click_on 'Save'
 
     job = Job.last.id
     expect(current_path).to eq(company_job_path company, job)
