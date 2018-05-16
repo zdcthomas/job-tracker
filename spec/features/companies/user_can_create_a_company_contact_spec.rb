@@ -17,10 +17,12 @@ describe 'a user' do
 
     click_on 'Save'
 
-    expect(current_path).to eq(company_path)
+    expect(current_path).to eq(company_path(company))
+
     expect(page).to have_content(full_name)
     expect(page).to have_content(position)
     expect(page).to have_content(email)
+    expect(page).to have_button
     end
   end
 end
