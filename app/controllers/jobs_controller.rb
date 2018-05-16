@@ -2,49 +2,82 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :destroy, :edit, :update]
 
   def index
-    @company = Company.find(params[:company_id])
-    @jobs = @company.jobs
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+      @jobs = @company.jobs
+    else
+      @jobs = Job.all
+    end
   end
 
   def new
-    @company = Company.find(params[:company_id])
-    @job = Job.new()
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+      @job = Job.new()
+    else
+      @job = Job.new()
+    end
   end
 
   def create
-    @company = Company.find(params[:company_id])
-    @job = @company.jobs.new(job_params)
-    if @job.save
-      flash[:success] = "You created #{@job.title} at #{@company.name}"
-      redirect_to company_job_path(@company, @job)
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+      @job = @company.jobs.new(job_params)
+      if @job.save
+        flash[:success] = "You created #{@job.title} at #{@company.name}"
+        redirect_to company_job_path(@company, @job)
+      else
+        redirect_to new_company_job_path
+      end
     else
-      render :new
+      @job = Job.new(job_params)
+      if @job.save
+        flash[:success] = "You created #{@job.title}"
+        redirect_to job_path(@job)
+      else
+        redirect_to new_job_path
+      end
     end
   end
 
   def show
-    @comment = Comment.new
-    @comments = Comment.all.order(created_at: :desc)
+    if params[:company_id]
+      @comment = Comment.new
+      @comments = Comment.all.order(created_at: :desc)
+    else
+
+    end
   end
 
   def edit
-    @company = Company.find(params[:company_id])
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+    else
+
+    end
   end
 
   def update
-    @job.update(job_params)
-    if @job.save
-      flash[:success] = "#{@job.title} updated!"
-      redirect_to company_job_path
+    if params[:company_id]
+      @job.update(job_params)
+      if @job.save
+        flash[:success] = "#{@job.title} updated!"
+        redirect_to company_job_path
+      else
+        render :edit
+      end
     else
-      render :edit
+
     end
   end
 
   def destroy
-    @job.destroy
-
+    if params[:company_id]
+      @job.destroy
     redirect_to company_jobs_path
+    else
+
+    end
   end
 
   private
