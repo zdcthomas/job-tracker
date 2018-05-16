@@ -2,13 +2,17 @@ require 'rails_helper'
 
 describe "The Nav Bar" do
   it 'should have links to jobs, companies, categories' do
-    skip
-    expect(partials:"nav").to have_link("Jobs")
-    expect(partials:"nav").to have_link("Companies")
-    expect(partials:"nav").to have_link("Jobs")
+    visit jobs_path
+    # expect(partials:"nav").to have_link("Jobs")
+    # expect(partials:"nav").to have_link("Companies")
+    # expect(partials:"nav").to have_link("Categories")
+    within('.nav_bar') do
+      expect(page).to have_link('Jobs')
+      expect(page).to have_link('Companies')
+      expect(page).to have_link('Categories')
+    end
   end
   context 'links' do
-    skip
     it 'should redirect to jobs path' do
       skip
       render(partials:"nav")
