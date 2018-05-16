@@ -1,7 +1,34 @@
-<% if @company %>
-  All Jobs for <strong><%= @company.name %></strong>
-<% else %>
-  <% @jobs.each do |job| %>
-    <ul><%= job.title %> at <%= job.company.name %></ul>
+<header>
+  <% if @company %>
+    <h1>
+      All Jobs for 
+        <strong><%= @company.name %></strong>
+    </h1>
+  <% else %>
+    <h1>
+      Jobs:
+    </h1>
   <% end %>
-<% end %>
+   <%= link_to  "Add A Job", new_job_path %>
+</header>
+
+
+<content>
+  <% @jobs.each do |job| %>
+    <ul>
+    
+      <h3>
+        <%= link_to  "#{job.title}", job_path(job) %> at <%= link_to  "#{job.company.name}", company_path(job.company) %>
+      </h3>
+
+      <p>
+        City: <%= job.city %> 
+      </p>
+
+      <p>
+        Level of Interest: <%= job.level_of_interest %> 
+      </p>
+
+    </ul>
+  <% end %>
+</content>

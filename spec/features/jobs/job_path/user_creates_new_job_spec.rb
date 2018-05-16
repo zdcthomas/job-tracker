@@ -18,7 +18,7 @@ describe "User creates a new job" do
     select "#{category.title}", from: 'Category'
     select "#{company.name}", from: 'Company'
     
-    click_on 'Create Job'
+    click_on 'Save'
 
     job = Job.find_by(title: title)
     expect(current_path).to eq(job_path job)
@@ -36,6 +36,15 @@ describe "User creates a new job" do
   it 'should have a create new category button' do
     visit new_job_path
 
-    expect(page).to have_link('add new category')
+    expect(page).to have_link('Add A New Category')
+  end
+  context 'cancel button' do
+    it 'should return the user to jobs path' do
+      visit new_job_path
+
+      click_on("Cancel")
+
+      expect(current_path).to eq(jobs_path)
+    end
   end
 end

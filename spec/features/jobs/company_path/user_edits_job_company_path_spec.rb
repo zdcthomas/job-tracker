@@ -25,7 +25,7 @@ describe 'user edits job' do
         fill_in 'job[level_of_interest]', with: new_interest
         fill_in 'job[city]', with: new_city
 
-        click_on 'Update Job'
+        click_on 'Save'
 
         expect(page).to have_content(new_title)
         expect(page).to have_content(new_interest)
