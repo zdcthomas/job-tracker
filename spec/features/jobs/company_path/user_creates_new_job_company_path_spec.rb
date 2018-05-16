@@ -37,7 +37,6 @@ describe "User creates a new job from company job path" do
     it 'should have a create new category button' do
       company = Company.create!(name: "ESPN")
       visit new_company_job_path(company)
-
-      expect(page).to have_link('add new category')
+      expect(page).to have_link('Add A New Category')
   end
 end

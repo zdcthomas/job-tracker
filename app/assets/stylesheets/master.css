@@ -8,7 +8,20 @@ header {
 }
 
 content{
-  
+  border: 10px;
+}
+
+form {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 25%;
+}
+
+input{
+  margin: 10px;
+  border: 2px solid brown;
 }
 
 ul {

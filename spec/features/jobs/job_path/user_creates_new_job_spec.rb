@@ -36,7 +36,7 @@ describe "User creates a new job" do
   it 'should have a create new category button' do
     visit new_job_path
 
-    expect(page).to have_link('add new category')
+    expect(page).to have_link('Add A New Category')
   end
   context 'cancel button' do
     it 'should return the user to jobs path' do

@@ -5,7 +5,7 @@ describe 'A User' do
     it 'should contain a form with the correct fields' do
       visit new_category_path
 
-      expect(page).to have_content('New Category')
+      expect(page).to have_content('Add Category')
       expect(page).to have_field('category[title]')
       expect(page).to have_button('Create Category')
     end

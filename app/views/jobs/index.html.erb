@@ -1,24 +1,24 @@
-<% if @company %>
 <header>
-  <h1>
-    All Jobs for 
-      <strong><%= @company.name %></strong>
-  </h1>
+  <% if @company %>
+    <h1>
+      All Jobs for 
+        <strong><%= @company.name %></strong>
+    </h1>
+  <% else %>
+    <h1>
+      Jobs:
+    </h1>
+  <% end %>
+   <%= link_to  "Add A Job", new_job_path %>
 </header>
-<% else %>
-<header>
-  <h1>
-    Jobs:
-  </h1>
-</header>
-<% end %>
+
 
 <content>
   <% @jobs.each do |job| %>
     <ul>
     
       <h3>
-        <%= job.title %> at <%= job.company.name %>
+        <%= link_to  "#{job.title}", job_path(job) %> at <%= link_to  "#{job.company.name}", company_path(job.company) %>
       </h3>
 
       <p>
