@@ -25,9 +25,9 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    @category.udpate(category_params)
+    @category.update(category_params)
 
-    redirect_to category(@category)
+    redirect_to category_path(@category)
   end
 
   def destroy
