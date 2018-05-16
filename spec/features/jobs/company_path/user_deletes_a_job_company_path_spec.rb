@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'A user' do
-  describe 'from the show page, clicks on the delete button' do
+  describe 'from the show page, clicks on the delete button from company job path' do
     it 'should delete' do
       category = Category.create!(title: 'Category')
       company = Company.create!(name: "ESPN")

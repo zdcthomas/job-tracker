@@ -82,7 +82,7 @@ class JobsController < ApplicationController
     if params[:company_id]
       redirect_to company_jobs_path
     else
-      redirect_to job_path
+      redirect_to jobs_path
     end
   end
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "User sees all jobs" do
+describe "User sees all jobs from company job path" do
   scenario "a user sees all the jobs for a specific company" do
     category = Category.create!(title: 'Category')
     company = Company.create!(name: "ESPN")
