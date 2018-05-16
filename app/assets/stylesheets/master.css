@@ -1,3 +1,7 @@
+body{
+  margin: 0px;
+}
+
 header {
   padding: 2%;
   border-bottom: 2px groove brown;
@@ -32,7 +36,9 @@ a:hover{
 }
 
 .nav_bar {
-
+  background: grey;
+  padding: 4px;
+  margin: 0px;
 }
 
 aside {
