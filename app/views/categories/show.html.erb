@@ -1,11 +1,17 @@
-<h1>Category Title:</h1>
-<%= @category.title %>
-<ul>
-  <% @jobs.each do |job| %>
-    <li>
-      <%= job.title %></br>
-      <%= job.description %></br>
-      <%= job.city %></br>
-    </li>
-  <% end %>
-</ul>
+<header>
+  <h1>
+    Category:
+    <%= @category.title %>
+  </h1>
+</header>
+<content>
+  <ul>
+    <% @jobs.each do |job| %>
+      <li>
+        <%= job.title %></br>
+        <%= job.description %></br>
+        <%= job.city %></br>
+      </li>
+    <% end %>
+  </ul>
+</content>

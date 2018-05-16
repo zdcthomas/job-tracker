@@ -1,11 +1,17 @@
-<h3>Job Categories</h3>
-<%= link_to 'add new category', new_category_path %>:
-<ul>
-  <% @categories.each do |category| %>
-  <li>
-    <%= category.title %>
-    <%= button_to "Edit", edit_category_path(category), method: 'get' %>
-    <%= button_to "Delete", category_path(category), method: "delete" %>
-  </li>
-  <% end %>
-</ul>
+<header>
+  <h3>
+    Job Categories
+  </h3>
+  <%= link_to 'add new category', new_category_path %>:
+</header>
+<content>
+  <ul>
+    <% @categories.each do |category| %>
+    <li>
+      <%= category.title %>
+      <%= button_to "Edit", edit_category_path(category), method: 'get' %>
+      <%= button_to "Delete", category_path(category), method: "delete" %>
+    </li>
+    <% end %>
+  </ul>
+</content>
