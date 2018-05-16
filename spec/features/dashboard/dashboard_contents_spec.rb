@@ -47,11 +47,42 @@ describe "a user visits /dashboard" do
     job = company.jobs.create!(title: "Developer", level_of_interest: 90, city: "Antarctica", category_id: category.id)
     job = company.jobs.create!(title: "another one", level_of_interest: 100, city: "Denver", category_id: category.id)
 
+    visit dashboard
+
     expect(page).to have_content("Denver Jobs: 2")
     expect(page).to have_content("Hong Kong Jobs: 2")
     expect(page).to have_content("Antarctica Jobs: 1")
 
   end
   it 'should have a link to those locations' do
+    category = Category.create!(title: 'Category')
+    company = Company.create!(name: "ESPN")
+    job = company.jobs.create!(title: "not this either", level_of_interest: 10, city: "Hong Kong", category_id: category.id)
+    job = company.jobs.create!(title: "not this", level_of_interest: 10, city: "Hong Kong", category_id: category.id)
+    job = company.jobs.create!(title: "some job", level_of_interest: 80, city: "Denver", category_id: category.id)
+    job = company.jobs.create!(title: "Developer", level_of_interest: 90, city: "Antarctica", category_id: category.id)
+    job = company.jobs.create!(title: "another one", level_of_interest: 100, city: "Denver", category_id: category.id)
+
+    visit dashboard
+
+    expect(page).to have_link("Denver Jobs")
+    expect(page).to have_link("Hong Kong Jobs")
+    expect(page).to have_link("Antarctica Jobs")
+  end
+  context 'location link' do
+    it 'should redirect to the appropraite location page' do
+      category = Category.create!(title: 'Category')
+      company = Company.create!(name: "ESPN")
+      job = company.jobs.create!(title: "not this either", level_of_interest: 10, city: "Hong Kong", category_id: category.id)
+      job = company.jobs.create!(title: "not this", level_of_interest: 10, city: "Hong Kong", category_id: category.id)
+      job = company.jobs.create!(title: "some job", level_of_interest: 80, city: "Denver", category_id: category.id)
+      job = company.jobs.create!(title: "Developer", level_of_interest: 90, city: "Antarctica", category_id: category.id)
+      job = company.jobs.create!(title: "another one", level_of_interest: 100, city: "Denver", category_id: category.id)
+  
+      visit dashboard
+      click_on "Denver Jobs"
+
+      expect(current_path).to eq(jobs_path location:"Denver")
+    end
   end
 end
