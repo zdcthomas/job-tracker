@@ -7,7 +7,7 @@ describe "A User" do
       category = Category.create!(title: "Tough Job")
       job = company.jobs.create!(title: "Developer",
                                  level_of_interest: 70,
-                                 city: "Denver", 
+                                 city: "Denver",
                                  category_id: category.id)
 
       visit company_job_path company, job
@@ -22,7 +22,7 @@ describe "A User" do
       category = Category.create!(title: "Tough Job")
       job = company.jobs.create!(title: "Developer",
                                  level_of_interest: 70,
-                                 city: "Denver", 
+                                 city: "Denver",
                                  category_id: category.id)
       comment_content = "This is a great looking job. It even pays money!"
 
@@ -39,7 +39,7 @@ describe "A User" do
       category = Category.create!(title: "Tough Job")
       job = company.jobs.create!(title: "Developer",
                                  level_of_interest: 70,
-                                 city: "Denver", 
+                                 city: "Denver",
                                  category_id: category.id)
       comment_content1 = "This is a great looking job. It even pays money!"
       comment_content2 = "I've changed my mind, this job looks horrible."
@@ -50,7 +50,6 @@ describe "A User" do
       fill_in "comment[content]", with: comment_content2
       click_on "Create Comment"
 
-      save_and_open_page
       expect(page).to have_content(comment_content1)
       expect(page).to have_content(comment_content2)
     end
@@ -59,7 +58,7 @@ describe "A User" do
       category = Category.create!(title: "Tough Job")
       job = company.jobs.create!(title: "Developer",
                                  level_of_interest: 70,
-                                 city: "Denver", 
+                                 city: "Denver",
                                  category_id: category.id)
       comment_content1 = "This is a great looking job. It even pays money!"
       comment_content2 = "I've changed my mind, this job looks horrible."
@@ -69,7 +68,7 @@ describe "A User" do
       click_on "Create Comment"
       fill_in "comment[content]", with: comment_content2
       click_on "Create Comment"
-      
+
       within "li:nth-child(1)" do
         expect(page).to have_content(comment_content2)
       end

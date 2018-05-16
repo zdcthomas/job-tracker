@@ -6,7 +6,10 @@ describe 'user edits job' do
       it 'edits an existing entry' do
         category = Category.create!(title: 'Category')
         company = Company.create!(name: "ESPN")
-        job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category_id: category.id)
+        job = company.jobs.create!(title: "Developer",
+                                   level_of_interest: 70,
+                                   city: "Denver",
+                                   category_id: category.id)
 
         visit company_job_path(company, job)
 
