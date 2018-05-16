@@ -64,19 +64,25 @@ class JobsController < ApplicationController
         flash[:success] = "#{@job.title} updated!"
         redirect_to company_job_path
       else
-        render :edit
+        redirect_to edit_company_job_path
       end
     else
-
+      @job.update(job_params)
+      if @job.save
+        flash[:success] = "#{@job.title} updated!"
+        redirect_to job_path
+      else
+        redirect_to edit_job_path
+      end
     end
   end
 
   def destroy
+    @job.destroy
     if params[:company_id]
-      @job.destroy
-    redirect_to company_jobs_path
+      redirect_to company_jobs_path
     else
-
+      redirect_to job_path
     end
   end
 
