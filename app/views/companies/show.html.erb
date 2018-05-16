@@ -1,32 +1,29 @@
-All Jobs for <strong><%= @company.name %></strong>
+<header>
+  <h1>
+    All Jobs for <strong><%= @company.name %></strong>
+  </h1
+</header>
+<content>
+  <ul>
+    <% @company.jobs.each do |job| %>
+      <li><%= job.title %></li>
+    <% end %>
+  </ul>
+</content>
 
-<ul>
-  <% @company.jobs.each do |job| %>
-    <li><%= job.title %></li>
+<aside>
+  <%= render partial: "contact" %>
+
+  <h3>
+    Existing Contacts:
+  </h3>
+  <ul>
+  <% @contacts.each do |contact| %>
+    <li>
+      <%= contact.full_name %>
+      <%= contact.position %>
+      <%= contact.email %>
+    </li>
   <% end %>
-</ul>
-
-<%= form_for [@company, @contact] do |f| %>
-
-  <%= f.label :full_name %>
-  <%= f.text_field :full_name %>
-
-  <%= f.label :position %>
-  <%= f.text_field :position %>
-
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <%= f.submit 'Save'%>
-<% end %>
-
-<h3>Existing Contacts</h3>
-<ul>
-<% @contacts.each do |contact| %>
-  <li>
-    <%= contact.full_name %>
-    <%= contact.position %>
-    <%= contact.email %>
-  </li>
-<% end %>
-</ul>
+  </ul>
+<aside>
