@@ -1,0 +1,40 @@
+header {
+  padding: 2%;
+  border-bottom: 2px groove brown;
+}
+
+content{
+  
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+li {
+  padding: 1%;
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+a {
+  padding: 2px;
+  text-decoration: none;
+}
+
+a:hover{
+  color: black;
+  text-decoration: underline;
+}
+
+.nav_bar {
+
+}
+
+aside {
+  
+}
