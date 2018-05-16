@@ -42,11 +42,10 @@ class JobsController < ApplicationController
 
   def show
     if params[:company_id]
-      @comment = Comment.new
-      @comments = Comment.all.order(created_at: :desc)
-    else
-
+      @company = Company.find(params[:company_id])
     end
+    @comment = Comment.new
+    @comments = Comment.all.order(created_at: :desc)
   end
 
   def edit

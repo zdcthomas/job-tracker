@@ -2,12 +2,18 @@
   <h1>
     <%= @job.title %> at <%= link_to @job.company.name, company_path(@job.company) %>
   </h1>
-  <%= link_to 'Edit', edit_company_job_path(@job.company) %> 
-  <%= link_to "Delete", company_job_path(@job.company, @job), method: :delete%>
+  <% if @company %>
+    <%= link_to 'Edit', edit_company_job_path(@company) %>
+    <%= link_to "Delete", company_job_path(@company, @job), method: :delete%>
+  <% else %>
+    <%= link_to 'Edit', edit_job_path(@job) %>
+    <%= link_to "Delete", job_path(@job), method: :delete%>
+  <% end %>
+
   <p>Location: <%= @job.city %></p>
   <p>Description: <%= @job.description %></p>
   <p>Level of Interest: <%= @job.level_of_interest %></p>
-  
+
   <%= render partial: "comment" %>
 </header>
 
@@ -19,4 +25,3 @@
     </li>
   <%end%>
 </ul>
-
