@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'user edits job' do
-  describe 'they link from a show page' do
+  describe 'they link from a show page from company job path' do
     describe 'they fill in a form' do
       it 'edits an existing entry' do
         category = Category.create!(title: 'Category')
@@ -11,11 +11,11 @@ describe 'user edits job' do
                                    city: "Denver",
                                    category_id: category.id)
 
-        visit company_job_path(company, job)
+        visit job_path(job)
 
         click_on 'Edit'
 
-        expect(current_path).to eq(edit_company_job_path(company, job))
+        expect(current_path).to eq(edit_job_path(job))
 
         new_title = 'Not Developer'
         new_interest = 20

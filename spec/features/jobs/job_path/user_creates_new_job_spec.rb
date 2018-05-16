@@ -4,7 +4,7 @@ describe "User creates a new job" do
   scenario "a user can create a new job" do
     company = Company.create!(name: "ESPN")
     category = Category.create!(title: 'sick')
-    visit new_company_job_path(company)
+    visit new_job_path
 
     title = "Developer"
     description = "So fun!"
@@ -20,23 +20,22 @@ describe "User creates a new job" do
     
     click_on 'Create Job'
 
-    expect(current_path).to eq("/companies/#{company.id}/jobs/#{Job.last.id}")
+    job = Job.find_by(title: title)
+    expect(current_path).to eq(job_path job)
     expect(page).to have_content(company.name)
     expect(page).to have_content(title)
     expect(page).to have_content(level_of_interest)
     expect(page).to have_content(city)
   end
 
-    it 'should have a dropdown menu for categories' do
-      company = Company.create!(name: "ESPN")
-      visit new_company_job_path(company)
+  it 'should have a dropdown menu for categories' do
+    visit new_job_path
 
-      expect(page).to have_select('Category')
-    end
-    it 'should have a create new category button' do
-      company = Company.create!(name: "ESPN")
-      visit new_company_job_path(company)
+    expect(page).to have_select('Category')
+  end
+  it 'should have a create new category button' do
+    visit new_job_path
 
-      expect(page).to have_link('add new category')
+    expect(page).to have_link('add new category')
   end
 end
