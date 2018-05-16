@@ -52,7 +52,8 @@ class JobsController < ApplicationController
     if params[:company_id]
       @company = Company.find(params[:company_id])
     else
-
+      @job = Job.find(params[:id])
+      @company = @job.company
     end
   end
 
