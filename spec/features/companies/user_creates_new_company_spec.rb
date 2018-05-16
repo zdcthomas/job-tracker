@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe "User creates a new company" do
   scenario "a user can create a new company" do
+    skip
     visit new_company_path
 
     name = "ESPN"
